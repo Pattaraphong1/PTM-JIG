@@ -1,8 +1,14 @@
-import React from "react";
+import Header from "./Header";
+import Menu from "./Menu";
+//import Content from "./Content";
+import Footer from "./Footer";
 
-function Content() {
+function MasterEquipment() {
   return (
     <>
+      <Header />
+      <Menu />
+      {/* Content */}
       {/* Content Wrapper. Contains page content */}
       <div className="content-wrapper">
         {/* Content Header (Page header) */}
@@ -10,7 +16,7 @@ function Content() {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1 className="m-0">Content Home</h1>
+                <h1 className="m-0">Master Equipment</h1>
               </div>
               {/* /.col */}
               <div className="col-sm-6">
@@ -35,8 +41,10 @@ function Content() {
         {/* /.content */}
       </div>
       {/* /.content-wrapper */}
+      {/* End Content */}
+      <Footer />
     </>
   );
 }
 
-export default Content;
+export default MasterEquipment;
