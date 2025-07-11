@@ -1,7 +1,10 @@
 import React from "react";
-
 import { detectBrowser, loadTreeview } from "../Utility";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import config from "../config";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Menu() {
 
@@ -13,13 +16,19 @@ function Menu() {
         }
     }, []);
 
+    const [user, setUser] = useState({});
+    const [show, setShow] = useState(false);    // show menu if have permission
+    const uid = localStorage.getItem('uid');
+
+    //console.log(uid);
+
   return (
     <>
 
       {/* Main Sidebar Container */}
       <aside className="main-sidebar sidebar-dark-primary elevation-4">
         {/* Brand Logo */}
-        <a href="/" className="brand-link">
+        <a href="/ptmjig" className="brand-link">
           <img
             src="dist/img/PTMJigLogo2.png"
             alt="AdminLTE Logo"
@@ -30,22 +39,6 @@ function Menu() {
         </a>
         {/* Sidebar */}
         <div className="sidebar">
-          {/* Sidebar user panel (optional) */}
-          {/* <div className="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div className="image">
-              <img
-                src="dist/img/user2-160x160.jpg"
-                className="img-circle elevation-2"
-                alt="User Image"
-              />
-            </div>
-            <div className="info">
-              <a href="#" className="d-block">
-                Pattaraphong Saekho
-              </a>
-            </div>
-          </div> */}
-
           <nav className="mt-2">
             <ul
               className="nav nav-pills nav-sidebar flex-column"
@@ -56,7 +49,7 @@ function Menu() {
               {/* Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library */}
               <li className="nav-item menu-open">
-                <a href="#" className="nav-link">
+                <a href="/" className="nav-link">
                   {/* <i className="nav-icon fas fa-tachometer-alt" /> */}
                   <i className="nav-icon fas fa-tools"></i>
                   <p>
@@ -76,13 +69,7 @@ function Menu() {
                       <i className="far fa-circle nav-icon" />
                       <p>Master Equipment Type</p>
                     </a>
-                  </li>
-                  {/* <li className="nav-item">
-                    <a href="./index3.html" className="nav-link">
-                      <i className="far fa-circle nav-icon" />
-                      <p>Dashboard v3</p>
-                    </a>
-                  </li> */}
+                  </li>                 
                 </ul>
               </li>
             </ul>

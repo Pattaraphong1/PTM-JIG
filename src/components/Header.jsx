@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import config from "../config";
 import axios from "axios";
 
@@ -78,6 +78,7 @@ function Header() {
                 document.body.removeChild(iframe);
                 console.log('iframe ถูกลบออกจาก DOM');
             }, 200);
+            
         };
 
         iframe.onerror = () => {
@@ -86,8 +87,10 @@ function Header() {
             document.body.removeChild(iframe);
         };
 
-    }
+         console.log("AAAA");
+         useNavigate('/'); // Redirects to the root path         
 
+    }
 
     useEffect(() => {
         // Event listener สำหรับข้อความจาก iframe (main domain)
@@ -102,6 +105,7 @@ function Header() {
                     // delete token from this domain
                     localStorage.removeItem('uid');
                     window.location.reload();
+                    //console.log('UID : ' + uid)
 
                 } else if (event.data === 'sso_logout_error_from_main_domain') {
                     console.error('ข้อผิดพลาด: Logout จากโดเมนหลักล้มเหลว.');
@@ -146,6 +150,8 @@ function Header() {
             
                 {/*S sign in Menu======================*/}
                 {logoutStatus}
+
+                
                 <li className="nav-item dropdown">
                     <div>
                         <a className="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -160,9 +166,10 @@ function Header() {
                         <ul className="dropdown-menu">
                             {!show ? (
                                 <li className="nav-item d-none d-sm-inline-block">
-                                    <span className="nav-link" style={{ cursor: 'pointer' }}
+                                    <span className="dropdown-item" style={{ cursor: 'pointer' }}
                                         onClick={() => setShowSignInModal(true)}  >
                                         <i className="fas fa-user-alt"></i> Sign In
+                                       
                                     </span>                                  
                                 </li>
                             ) : (
