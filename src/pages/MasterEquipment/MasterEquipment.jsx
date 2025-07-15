@@ -34,26 +34,9 @@ function MasterEquipment() {
   };
 
   const addEquipment = () => {
-      console.log("Add master Equipment");
-      
-      // Swal.fire({
-      //            title: 'Add Master Equipment',
-      //            text: 'Exam',
-      //            icon: 'info',
-      //            confirmButtonText: 'Add',
-      //          })
-
+      console.log("Add master Equipment");    
   }
-
-   const [selectedCity, setSelectedCity] = useState(null);
-    const cities = [
-        { name: 'New York', code: 'NY' },
-        { name: 'Rome', code: 'RM' },
-        { name: 'London', code: 'LDN' },
-        { name: 'Istanbul', code: 'IST' },
-        { name: 'Paris', code: 'PRS' }
-    ];
-
+   
   return (
     <>
       <Navbar />
